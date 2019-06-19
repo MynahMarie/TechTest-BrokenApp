@@ -13,7 +13,7 @@ const app = express();
 
 // Some things might be missing...
 
-app.use(bodyParser.urlencoded({extended: false}));
+app.use(bodyParser.urlencoded({extended: true}));
 app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(morgan('dev'));
@@ -33,6 +33,9 @@ app.engine('hbs', exphbs({
     lowerCase
   }
 }));
+
+
+app.use(express.static(path.join(__dirname, "..", "public")));
 
 app.use(router);
 
