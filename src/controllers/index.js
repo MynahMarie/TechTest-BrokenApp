@@ -7,18 +7,24 @@ const { capitalize } = require('../helpers/capitalize');
 const { displayAnimals, fetchSingleAnimal, insertAnimal } = require('../database/queries/animal_queries');
 
 router.get('/', (req, res) => { // DONT CHANGE THIS LINE!
-  // Render home view
+  res.render('home');
 });
 
 router.get('/congrats', (req, res) => { // DONT CHANGE THIS LINE!
-  // Render congrats view
+  res.render('congrats');
 });
 
 router.get('/user/:name', (req, res) => { // DONT CHANGE THIS LINE!
   // We need to send the name of the user to the view.
   //Make sure the name is capitalized when it shows on the page!
+  const nameValue = req.params.name;
+  const name = capitalize(nameValue[0] + nameValue.slice(1));
+  console.log("this is my name:", name);
   res.render('welcome', { name });
-});
+
+  })
+
+
 
 router.post('/user/:name', (req, res) => { // DONT CHANGE THIS LINE!
   // This endpoint goes to any name the user entered on the home page.
@@ -33,10 +39,18 @@ router.get('/animals', (req, res) => {  // DONT CHANGE THIS LINE!
   res.render('animals', { animals });
 });
 
+
 router.get('/animals/create', (req, res) => { // DONT CHANGE THIS LINE!
   // Render create_animal and send appropriate data
-  res.render('create_animal');
-})
+  // const { animalName ,img, habitat, origin, facts, myth } = req.body;
+  // insertAnimal(animalName ,img, habitat, origin, facts, myth, (err,result) => {
+  //   if (err) console.log("There is an error!:", err);
+  //   else { res.render('create_animal');
+  //   }
+  //
+  //
+  // })
+});
 
 router.post('/animals/new', (req, res) => { // DONT CHANGE THIS LINE!
   let data = req.body.data;
