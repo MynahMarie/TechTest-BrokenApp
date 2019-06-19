@@ -8,26 +8,35 @@ const { displayAnimals, fetchSingleAnimal, insertAnimal } = require('../database
 
 router.get('/', (req, res) => { // DONT CHANGE THIS LINE!
   // Render home view
+  res.render('home');
 });
 
 router.get('/congrats', (req, res) => { // DONT CHANGE THIS LINE!
-  // Render congrats view
+  // Render congrn strats view
+  res.render('congrats');
 });
 
 router.get('/user/:name', (req, res) => { // DONT CHANGE THIS LINE!
   // We need to send the name of the user to the view.
   //Make sure the name is capitalized when it shows on the page!
-  res.render('welcome', { name });
+  const { name } = req.params;
+  res.render('welcome', { name: capitalize(name) });
+
 });
 
 router.post('/user/:name', (req, res) => { // DONT CHANGE THIS LINE!
   // This endpoint goes to any name the user entered on the home page.
   // ex. : /user/mynah, /user/shireen, /user/lital, etc...
+  const { name } = req.params;
+  res.render('welcome');
   res.send({redirect: '/user/'.concat(name)}); // DONT CHANGE THIS LINE!
 });
 
 router.get('/animals', (req, res) => {  // DONT CHANGE THIS LINE!
-
+displayAnimals((err, result) => {
+  if(err) return err;
+  res.json(result);
+  })
   //Now we are rendering data from a file...
   // The data in the file is just dummy data. We need to take the data from the database!
   res.render('animals', { animals });
@@ -36,6 +45,7 @@ router.get('/animals', (req, res) => {  // DONT CHANGE THIS LINE!
 router.get('/animals/create', (req, res) => { // DONT CHANGE THIS LINE!
   // Render create_animal and send appropriate data
   res.render('create_animal');
+  // res.send();
 })
 
 router.post('/animals/new', (req, res) => { // DONT CHANGE THIS LINE!
@@ -59,5 +69,6 @@ router.get('/animals/:animal', (req, res) => { // DONT CHANGE THIS LINE!
 });
 
 // How to deal with pages not found? HINT: This app has a function for that somewhere...
+
 
 module.exports = router;

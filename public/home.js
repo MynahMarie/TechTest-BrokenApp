@@ -5,7 +5,10 @@ document.getElementById('submitBtn').addEventListener('click', function(e) {
   // Use function sendInfo to POST information to server
   sendInfo('/user/' + name, 'GET', name, function(err, success) {
       // Some things are missing...
+      if(err) {
+        console.log(err);
+      } else {
       window.location = success.redirect; // You will need this line somewhere ;)
-    }
+      }
+    })
   });
-});
