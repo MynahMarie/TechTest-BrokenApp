@@ -15,13 +15,16 @@ const fetchSingleAnimal = (animal_name, cb) => {
   })
 }
 
-const insertAnimal = (data, cb) => {
+const insertAnimal = (animal_name, img_link, habitat, origin, facts, myths, cb) => {
     dbConnect.query(`INSERT INTO animals(animal_name, img_link, habitat, origin, facts, myths) VALUES($1, $2, $3, $4, $5, $6)`,
-  [data], (e, success) => {
-    // hum...
-    return success;
+    [animal_name, img_link, habitat, origin, facts, myths], (err, success) => {
+    if (err) return cb(err);
+      cb(null, res);
+    // return success;
   })
 }
+
+
 
 module.exports = {
   displayAnimals,

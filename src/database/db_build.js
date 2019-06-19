@@ -1,6 +1,6 @@
 // DONT CHANGE THIS FILE
 const fs = require("fs");
-require('dotenv').config();
+require("dotenv").config();
 
 const dbConnection = require("./db_connect.js");
 
@@ -16,6 +16,6 @@ const runDbBuild = cb => {
 runDbBuild((e, success) => {
   if (e) console.log(e);
   else console.log(success);
-})
+});
 
 module.exports = runDbBuild;
