@@ -8,15 +8,20 @@ const { displayAnimals, fetchSingleAnimal, insertAnimal } = require('../database
 
 router.get('/', (req, res) => { // DONT CHANGE THIS LINE!
   // Render home view
+  res.render('home');
 });
 
 router.get('/congrats', (req, res) => { // DONT CHANGE THIS LINE!
   // Render congrats view
+  res.render('congrats');
 });
 
 router.get('/user/:name', (req, res) => { // DONT CHANGE THIS LINE!
   // We need to send the name of the user to the view.
   //Make sure the name is capitalized when it shows on the page!
+  const inputValue = req.params.name;
+  const name = capitalize(inputValue[0]) + inputValue.slice(1);
+  console.log(name);
   res.render('welcome', { name });
 });
 
@@ -41,11 +46,14 @@ router.get('/animals/create', (req, res) => { // DONT CHANGE THIS LINE!
 router.post('/animals/new', (req, res) => { // DONT CHANGE THIS LINE!
   let data = req.body.data;
   let msg = "Thank you for registering a new animal!";
-
+  let existMsg = 'Already exists';
   // Here we need to first check if this animal is already in the database.
   // Then, we need to receive the input from the form and insert the animal in the database.
   // Finally, we redirect the user to /animals with a msg (success if animal was created, or
   // "Sorry, this animal was already created...", if the animal is already in the database).
+  if (data) {
+
+  }
   res.send({redirect: '/animals', msg });
 })
 
