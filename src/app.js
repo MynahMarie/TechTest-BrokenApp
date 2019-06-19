@@ -10,8 +10,12 @@ const { capitalize } = require('./helpers/capitalize');
 const { lowerCase } = require('./helpers/lowercase');
 
 const app = express();
+app.disable('etag');
 
 // Some things might be missing...
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
+app.disable('x-powered-by');
 
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
@@ -27,7 +31,7 @@ app.engine('hbs', exphbs({
   extname: 'hbs',
   layoutsDir: path.join(__dirname, "views", "layouts"),
   defaultLayout: 'main',
-  partialsDir: path.join(__dirname, "views", "partials"),
+  // partialsDir: path.join(__dirname, "views", "partials"),
   helpers: {
     capitalize,
     lowerCase
@@ -35,7 +39,6 @@ app.engine('hbs', exphbs({
 }));
 
 app.use(router);
-
 app.use((err, req, res, next) => {
   if (res.status === 500) {
     errors.serverError(err, res)

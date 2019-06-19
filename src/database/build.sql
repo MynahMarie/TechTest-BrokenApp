@@ -19,7 +19,7 @@ INSERT INTO animals (animal_name, img_link, habitat, origin, facts, myths) VALUE
   ('koala', '/assets/animals/koala.jpeg', 'Eucalyptus forests and woodlands', 'Australia', 'They sleep up to 18h a day!', 'The koala who had a stumpy tail'),
   ('kangoroo', '/assets/animals/kangoroo.jpeg', 'Variety of habitats, from savana to grassy plains', 'Australia', 'The mom has as a pocket to carry the babies', 'Roger The Kangoroo'),
   ('lion', '/assets/animals/lion.jpeg', 'Open lands', 'Africa', 'They are the most social of all big cats.', 'The lion King'),
-  ('giraffe', '/assets/animals/giraffe.jpeg', 'Savana and open ranges', 'Sahara and regions of Africa', 'Tallest mamel on Earth.', 'Giraffes Can\'t Dance'),
+  ('giraffe', '/assets/animals/giraffe.jpeg', 'Savana and open ranges', 'Sahara and regions of Africa', 'Tallest mamel on Earth.', 'Giraffes Can't Dance'),
   ('antilope', '/assets/animals/antilope.jpeg', 'African savanas', 'Africa', 'Runs very fast.', 'The Lion and the Antilope');
 
 COMMIT;
