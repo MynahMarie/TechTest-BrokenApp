@@ -3,9 +3,12 @@ document.getElementById('submitBtn').addEventListener('click', function(e) {
   var name = document.getElementById('name').value;
 
   // Use function sendInfo to POST information to server
-  sendInfo('/user/' + name, 'GET', name, function(err, success) {
+  sendInfo('/user/' + name, 'POST', name, function(err, success) {
       // Some things are missing...
-      window.location = success.redirect; // You will need this line somewhere ;)
-    }
+      
+      if(err) console.log('this is an error in sendInfo: ', err);
+      else {
+      window.location = success.redirect;
+    } // You will need this line somewhere ;)
+    })
   });
-});

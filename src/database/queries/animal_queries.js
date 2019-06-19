@@ -1,8 +1,8 @@
 const dbConnect = require('../db_connect');
 
 const displayAnimals = (cb) => {
-  dbConnect.query(`SELECT name FROM animals;`, (e, res) => {
-    // humm...
+  dbConnect.query(`SELECT animal_name FROM animals;`, (e, res) => {
+
     return cb(res.rows);
   });
 }
