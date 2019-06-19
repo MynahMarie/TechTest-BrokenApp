@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const exphbs = require('express-handlebars');
 const path = require('path');
 const morgan = require('morgan');
-const router = require('./controllers/index');
+const router = require('../controllers/index');
 const { capitalize } = require('./helpers/capitalize');
 const { lowerCase } = require('./helpers/lowercase');
 
